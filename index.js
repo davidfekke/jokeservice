@@ -2,6 +2,7 @@ import Fastify from 'fastify';
 import fs from 'fs';
 import Swagger from '@fastify/swagger';
 import SwaggerUI from '@fastify/swagger-ui';
+import swaggerConfig from './swaggerConfig.js';
 
 const port = process.env.PORT || 3000;
 const data = await fs.promises.readFile('jokes.json', 'utf8');
@@ -29,7 +30,7 @@ const fastify = Fastify({
     logger: true
 });
 
-await fastify.register(Swagger);
+await fastify.register(Swagger, swaggerConfig);
 await fastify.register(SwaggerUI);
 
 fastify.get('/', schemaConfig, async (req, reply) => {

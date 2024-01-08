@@ -2,8 +2,6 @@ import Fastify from 'fastify';
 import fs from 'fs';
 import Swagger from '@fastify/swagger';
 import SwaggerUI from '@fastify/swagger-ui';
-import swaggerConfig from './swaggerConfig.js';
-import swaggerUIConfig from './swaggerUIConfig.js';
 
 const port = process.env.PORT || 3000;
 const data = await fs.promises.readFile('jokes.json', 'utf8');
@@ -11,7 +9,7 @@ const jokesObj = JSON.parse(data);
 
 const schemaConfig = {
     schema: {
-        description: 'This returns lawyer jokes',
+        description: 'This returns Lawyer jokes',
         tags: ['LAWYER_JOKE'],
         summary: 'This returns a different lawyer joke every time this is called',
         operationId: 'get-lawyer-joke',
